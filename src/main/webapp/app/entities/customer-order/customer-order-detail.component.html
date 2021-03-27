@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="customerOrder">
+            <h2><span jhiTranslate="customerOrderApp.customerOrder.detail.title">Customer Order</span> {{ customerOrder.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="customerOrderApp.customerOrder.orderNumber">Order Number</span></dt>
+                <dd>
+                    <span>{{ customerOrder.orderNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="customerOrderApp.customerOrder.orderStatus">Order Status</span></dt>
+                <dd>
+                    <span>{{ customerOrder.orderStatus }}</span>
+                </dd>
+                <dt><span jhiTranslate="customerOrderApp.customerOrder.customerNumber">Customer Number</span></dt>
+                <dd>
+                    <span>{{ customerOrder.customerNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="customerOrderApp.customerOrder.legalId">Legal Id</span></dt>
+                <dd>
+                    <span>{{ customerOrder.legalId }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/customer-order', customerOrder.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
