@@ -47,6 +47,8 @@ public class CacheConfiguration {
             createCache(cm, com.messumontain.customerorder.domain.User.class.getName());
             createCache(cm, com.messumontain.customerorder.domain.Authority.class.getName());
             createCache(cm, com.messumontain.customerorder.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.messumontain.customerorder.domain.CustomerOrder.class.getName());
+            createCache(cm, com.messumontain.customerorder.domain.OrderItem.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
