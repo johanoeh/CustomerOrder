@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-order-item-heading" jhiTranslate="customerOrderApp.orderItem.home.createOrEditLabel">Create or edit a Order Item</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="customerOrderApp.orderItem.procuctName" for="field_procuctName">Procuct Name</label>
+                    <input type="text" class="form-control" name="procuctName" id="field_procuctName"
+                           formControlName="procuctName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="customerOrderApp.orderItem.productId" for="field_productId">Product Id</label>
+                    <input type="text" class="form-control" name="productId" id="field_productId"
+                           formControlName="productId"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="customerOrderApp.orderItem.amount" for="field_amount">Amount</label>
+                    <input type="number" class="form-control" name="amount" id="field_amount"
+                           formControlName="amount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="customerOrderApp.orderItem.price" for="field_price">Price</label>
+                    <input type="text" class="form-control" name="price" id="field_price"
+                           formControlName="price"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="customerOrderApp.orderItem.customerOrder" for="field_customerOrder">Customer Order</label>
+                    <select class="form-control" id="field_customerOrder" name="customerOrder" formControlName="customerOrder">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="customerOrderOption.id === editForm.get('customerOrder')!.value?.id ? editForm.get('customerOrder')!.value : customerOrderOption" *ngFor="let customerOrderOption of customerorders; trackBy: trackById">{{ customerOrderOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
